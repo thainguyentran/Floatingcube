@@ -1,0 +1,40 @@
+{{ define "scripts-start2" }}
+{{ end }}
+<div class="container-fluid">
+  <div class='row'>
+    <div class='col-md-6 col-md-offset-3 start-container'>
+      <h1>Create your superadmin user</h1>
+      <p class='lead'>The superadmin user will be the user with full administrative rights.</p>
+      <form class='form-horizontal' role='form' action="/start/2" method='post'>
+        {{ if ne (len .Flashes) 0 }}
+        {{ range .Flashes }}
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <strong>{{ . }}</strong>
+        </div>
+        {{ end }}
+        {{ end }}
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" name='email' class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" name='password' class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2 col-sm-offset-10">
+            <button type="submit" class="btn btn-success">Continue</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
