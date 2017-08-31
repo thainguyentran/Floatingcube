@@ -12,7 +12,17 @@ _defaults = {
         'login_number': 0,
         'email_opt': False,
     }
-    
+
+def wkf_action_closing_control(self, cr, uid, ids, context=None):
+        session = self.browse(cr, uid, ids)
+        for session in self.browse(cr, uid, ids, context=context):
+            for statement in session.statement_ids:
+                if (statement != session.cash_register_id) and (statement.balance_end != statement.balance_end_real):
+                    self.pool.get('account.bank.statement').write(cr, uid, [statement.id], {'balance_end_real': statement.balance_end})
+        if session.email_opt:
+            self.send_report_email(cr, uid, ids, context=None)
+        return self.write(cr, uid, ids, {'state' : 'closing_control', 'stop_at' : time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+
 def send_report_email(self, cr, uid, ids, context=None):
         email_template_obj = self.pool.get('mail.template')
         pos_session_obj = self.pool.get('pos.print.session.summary')
