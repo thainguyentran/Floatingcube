@@ -1,0 +1,9 @@
+<openerp>
+    <data>
+        <template id="assets" inherit_id="epos_foundation.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/epos_foundation_display_customer_name_on_receipt/static/src/js/epos_foundation_display_customer_name_on_receipt.js"></script>
+            </xpath>
+        </template>  
+  </data>
+</openerp>
