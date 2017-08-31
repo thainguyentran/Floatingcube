@@ -1,0 +1,5 @@
+<field name="email_session_report" />
+<button name="send_report_email" type="object" string="Send Email" 
+                            attrs="{'invisible' : [('email_opt','=',False)], 'required':[('email_opt','=',True)]}" 
+                            class="oe_highlight" />
+ <field name="email_opt" invisible="1" />
